@@ -1,0 +1,14 @@
+FROM hsienting/dl_az
+
+COPY ./ /app
+ADD run.sh /app/
+RUN chmod +x /app/run.sh
+
+ENV STORAGE_ACCOUNT_NAME 
+ENV STORAGE_ACCOUNT_KEY 
+ENV AZUREML_NATIVE_SHARE_DIRECTORY /cmcntk
+ENV TESTIMAGESCONTAINER data
+
+EXPOSE 80
+
+ENTRYPOINT ["/app/run.sh"]
