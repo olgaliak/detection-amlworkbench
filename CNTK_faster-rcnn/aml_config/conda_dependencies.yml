@@ -1,0 +1,51 @@
+# Conda environment specification. The dependencies defined in this file will
+# be automatically provisioned for managed runs. These include runs against
+# the localdocker, remotedocker, and cluster compute targets.
+
+# Note that this file is NOT used to automatically manage dependencies for the
+# local compute target. To provision these dependencies locally, run:
+# conda env update --file conda_dependencies.yml
+
+# Details about the Conda environment file format:
+# https://conda.io/docs/using/envs.html#create-environment-file-by-hand
+
+# For managing Spark packages and configuration, see spark_dependencies.yml.
+
+name: project_environment
+channels:
+  - conda-forge
+  - jdreaver
+  - defaults
+dependencies:
+  # The python interpreter version.
+  # Currently Azure ML Workbench only supports 3.5.2.
+  - python=3.5.2
+
+  # Required for Jupyter Notebooks.
+  - ipykernel=4.6.1
+  - glib=2.50.2
+  - xorg-libsm
+  - xorg-libxrender
+  - xorg-libxext
+  - xorg-libxau
+  - libxdmcp
+  - cryptography
+
+  - pip:
+    # The API for Azure Machine Learning Model Management Service.
+    # Details: https://github.com/Azure/Machine-Learning-Operationalization
+    - azure-ml-api-sdk==0.1.0a10
+    - azureml.datacollector==0.1.0a13
+    - azure-common==1.1.8
+    - azure-storage==0.36.0
+    - opencv-python
+    - easydict
+    - pyyaml
+    - pillow
+    # Recent CNTK build
+    # CPU
+    # - https://olgalidata.blob.core.windows.net/cntk/cntkcpubin/cntk-2.1-cp35-cp35m-linux_x86_64.whl
+    # GPU
+    - https://olgalidata.blob.core.windows.net/cntk/cntk-2.1-cp35-cp35m-linux_x86_64.whl
+    # Helper utilities for dealing with Azure ML Workbench Assets.
+    - https://azuremldownloads.blob.core.windows.net/wheels/latest/azureml.assets-1.0.0-py3-none-any.whl?sv=2016-05-31&si=ro-2017&sr=c&sig=xnUdTm0B%2F%2FfknhTaRInBXyu2QTTt8wA3OsXwGVgU%2BJk%3D
