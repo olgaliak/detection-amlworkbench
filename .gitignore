@@ -1,0 +1,13 @@
+Detection/FastRCNN/Output/
+Detection/FasterRCNN/Output/
+
+# Python
+*.pyc
+__pycache__/
+.idea
+
+.azuremlhistory_git
+.azuremlhistory_git
+.ipynb_checkpoints
+.azureml/project.json
+azureml-logs
