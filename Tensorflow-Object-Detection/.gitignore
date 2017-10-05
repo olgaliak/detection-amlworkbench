@@ -1,0 +1,17 @@
+.azuremlhistory_git
+.azureml
+.ipynb_checkpoints
+azureml-logs
+
+traindir/
+
+# Python
+*.pyc
+__pycache__/
+.idea
+
+.azuremlhistory_git
+.azuremlhistory_git
+.ipynb_checkpoints
+.azureml/project.json
+azureml-logs

@@ -1,0 +1,3 @@
+type: "localdocker"
+baseDockerImage: "microsoft/mmlspark:plus-0.7.dev7_2.gcfbc920"
+

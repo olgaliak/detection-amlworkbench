@@ -1,0 +1,25 @@
+# Conda environment specification. The dependencies defined in this file will be
+# automatically provisioned for runs against docker, VM, and HDI cluster targets.
+
+# Details about the Conda environment file format:
+# https://conda.io/docs/using/envs.html#create-environment-file-by-hand
+
+# For Spark packages and configuration, see spark_dependencies.yml.
+
+name: project_environment
+dependencies:
+  - python=3.5.2
+  - pandas
+  - tensorflow
+  - pip:
+    - azure-common==1.1.8
+    - azure-storage==0.36.0
+    # The API for Azure Machine Learning Model Management Service.
+    # Details: https://github.com/Azure/Machine-Learning-Operationalization
+    - azure-ml-api-sdk==0.1.0a9
+    # Helper utilities for dealing with Azure ML Workbench Assets.
+    - https://azuremldownloads.blob.core.windows.net/wheels/latest/azureml.assets-1.0.0-py3-none-any.whl?sv=2016-05-31&si=ro-2017&sr=c&sig=xnUdTm0B%2F%2FfknhTaRInBXyu2QTTt8wA3OsXwGVgU%2BJk%3D
+    # TF object detection
+    - https://olgalidata.blob.core.windows.net/tfobj/object_detection-0.1.tar.gz
+    - https://olgalidata.blob.core.windows.net/tfobj/slim-0.1.tar.gz
+    - scipy
