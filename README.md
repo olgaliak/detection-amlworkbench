@@ -11,7 +11,7 @@ EnvironmentVariables:
   "STORAGE_ACCOUNT_NAME": "<YOUR_AZURE_STORAGE_ACCOUNT_NAME>"
   "STORAGE_ACCOUNT_KEY": "<YOUR_AZURE_STORAGE_ACCOUNT_KEY>"
 ```
-
+### CNTK
 To train on different pre-trained models, use this command below:
 This submits multiple jobs on each registered pre-trained model in a row
 
@@ -25,6 +25,17 @@ You can also switch the base model by giving an input argument like
 az ml experiment submit -c <your_context_name> Detection/FasterRCNN/run_faster_rcnn.py AlexNet
 az ml experiment submit -c <your_context_name> Detection/FasterRCNN/run_faster_rcnn.py VGG16
 ```
+### Tensorflow
+Here is how to submit training experiment using Tensorflow Object Detection APIs:
+az ml experiment submit  -c <your_context_name>   tf_train_eval.py --logtostderr   --train_dir=/azureml-share/traindir_no_aug  \
+  --input_type image_tensor    --pipeline_config_path=./kw_data/faster_rcnn_resnet101_no_aug.config   \
+   --eval_every_n_steps=500 --eval_dir=/azureml-share/eval_no_aug
+
+
+Use different config files in ./kw_data to train with different parameters.
+Change _eval_every_n_steps_if you'd like to run evaluation more oftem
+
+Note: you will need to update conda_dependancies.yaml to point to the location of  TF object detection dist packages.
 
 ## Predict
 
