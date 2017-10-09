@@ -42,10 +42,7 @@ dependencies:
     - easydict
     - pyyaml
     - pillow
-    # Recent CNTK build
-    # CPU
-    # - https://olgalidata.blob.core.windows.net/cntk/cntkcpubin/cntk-2.1-cp35-cp35m-linux_x86_64.whl
     # GPU
-    - https://olgalidata.blob.core.windows.net/cntk/cntk-2.1-cp35-cp35m-linux_x86_64.whl
+    - https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-linux_x86_64.whl
     # Helper utilities for dealing with Azure ML Workbench Assets.
     - https://azuremldownloads.blob.core.windows.net/wheels/latest/azureml.assets-1.0.0-py3-none-any.whl?sv=2016-05-31&si=ro-2017&sr=c&sig=xnUdTm0B%2F%2FfknhTaRInBXyu2QTTt8wA3OsXwGVgU%2BJk%3D
