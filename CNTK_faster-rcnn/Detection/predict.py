@@ -7,8 +7,6 @@
 import os, sys
 import numpy as np
 import argparse
-#from flask import jsonify
-import json
 from utils.od_utils import train_object_detector, evaluate_single_image, filter_results
 from utils.config_helpers import merge_configs
 from utils.misc.azure_utils import load_file_from_blob
@@ -89,4 +87,4 @@ def get_result(filename, eval_model):
                        #cfg["DATA"].CLASSES[labels[i]], labels[i], scores[i], [int(v) for v in bboxes[i]]))
         result.append({'label':cfg["DATA"].CLASSES[labels[i]], 'score':'%.3f'%(scores[i]), 'box':[int(v) for v in bboxes[i]]})
 
-    return json.dumps(result)
+    return result

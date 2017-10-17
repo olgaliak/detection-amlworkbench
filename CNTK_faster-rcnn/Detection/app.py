@@ -1,20 +1,28 @@
 import sys
-from flask import Flask, request
+from sanic import Sanic
+from sanic.response import json, text
+from sanic.config import Config
 from server import Server
 import server
-from flask_cors import CORS, cross_origin
 
 def main():
-  app = Flask(__name__)
-  CORS(app)
+  app = Sanic(__name__)
+  Config.KEEP_ALIVE = False
+
   server = Server()
   server.set_model()
-  
-  app.add_url_rule('/', view_func=server.server_running)
-  app.add_url_rule('/predict', view_func=server.predict, methods=['POST', 'OPTIONS'])
+
+  @app.route('/')
+  async def test(request):
+      return text(server.server_running())
+
+  @app.route('/predict', methods=["POST",])
+  def post_json(request):
+      return json(server.predict(request))
+
   app.run(host= '0.0.0.0', port=80)
   print ('exiting...')
   sys.exit(0)
-  
+
 if __name__ == '__main__':
-  main() 
+  main()
