@@ -27,15 +27,17 @@ az ml experiment submit -c <your_context_name> Detection/FasterRCNN/run_faster_r
 ```
 ### Tensorflow
 Here is how to submit training experiment using Tensorflow Object Detection APIs:
-az ml experiment submit  -c <your_context_name>   tf_train_eval.py --logtostderr   --train_dir=/azureml-share/traindir_no_aug  \
-  --input_type image_tensor    --pipeline_config_path=./kw_data/faster_rcnn_resnet101_no_aug.config   \
-   --eval_every_n_steps=500 --eval_dir=/azureml-share/eval_no_aug
 
+```
+az ml experiment submit -c <your_context_name> tf_train_eval.py --logtostderr --train_dir=/azureml-share/traindir_no_aug  \
+--input_type image_tensor --pipeline_config_path=./kw_data/faster_rcnn_resnet101_no_aug.config   \
+--eval_every_n_steps=500 --eval_dir=/azureml-share/eval_no_aug
+```
 
 Use different config files in ./kw_data to train with different parameters.
 Change _eval_every_n_steps_if you'd like to run evaluation more oftem
 
-Note: you will need to update conda_dependancies.yaml to point to the location of  TF object detection dist packages.
+> Note: you will need to update conda_dependancies.yaml to point to the location of  TF object detection dist packages.
 
 ## Predict
 
