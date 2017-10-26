@@ -1,6 +1,7 @@
 # Bird Detection with Azure ML Workbench
 
 Object detection using Faster R-CNN APIs in CNTK and Tensorflow.
+For more detailed walkthrough see also code story [Bird Detection with Azure ML Workbench](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/).
 
 ## Train
 
