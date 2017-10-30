@@ -12,25 +12,27 @@ EnvironmentVariables:
   "STORAGE_ACCOUNT_NAME": "<YOUR_AZURE_STORAGE_ACCOUNT_NAME>"
   "STORAGE_ACCOUNT_KEY": "<YOUR_AZURE_STORAGE_ACCOUNT_KEY>"
 ```
+
+For more info on Azure ML Workbench compute targets see[documentation](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-create-dsvm-hdi).
 ### CNTK
 To train on different pre-trained models, use this command below:
 This submits multiple jobs on each registered pre-trained model in a row
 
 ```
-  python Detection/FasterRCNN/run_sweep_parameters.py <your_context_name>
+  python Detection/FasterRCNN/run_sweep_parameters.py <your_compute_target>
 ```
 
 You can also switch the base model by giving an input argument like 
 
 ```
-az ml experiment submit -c <your_context_name> Detection/FasterRCNN/run_faster_rcnn.py AlexNet
-az ml experiment submit -c <your_context_name> Detection/FasterRCNN/run_faster_rcnn.py VGG16
+az ml experiment submit -c <your_compute_target> Detection/FasterRCNN/run_faster_rcnn.py AlexNet
+az ml experiment submit -c <your_compute_target> Detection/FasterRCNN/run_faster_rcnn.py VGG16
 ```
 ### Tensorflow
 Here is how to submit training experiment using Tensorflow Object Detection APIs:
 
 ```
-az ml experiment submit -c <your_context_name> tf_train_eval.py --logtostderr --train_dir=/azureml-share/traindir_no_aug  \
+az ml experiment submit -c <your_compute_target> tf_train_eval.py --logtostderr --train_dir=/azureml-share/traindir_no_aug  \
 --input_type image_tensor --pipeline_config_path=./kw_data/faster_rcnn_resnet101_no_aug.config   \
 --eval_every_n_steps=500 --eval_dir=/azureml-share/eval_no_aug
 ```
