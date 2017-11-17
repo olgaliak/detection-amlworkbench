@@ -30,6 +30,10 @@ dependencies:
   - xorg-libxau
   - libxdmcp
   - cryptography
+  
+   # Required for CNTK 2.2
+  - libpng=1.2
+  - jasper
 
   - pip:
     # The API for Azure Machine Learning Model Management Service.
